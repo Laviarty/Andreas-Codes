@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+ <html>
+   <head>
+       <meta charset="utf-8">
+       <title>lokalhost</title>
+    </head>
+    <body>
+		<script 
+			src="build/sigma.min.js">
+			</script>
+	   
+	<div id="container"></div>
+	
+	<script>
+    // First initialize sigma:
+    var s = new sigma('container');
+
+    // Add some data to display:
+    s.graph.addNode({
+      // Main attributes:
+      id: 'n0',
+      label: 'Hello',
+      // Display attributes:
+      x: 0,
+      y: 0,
+      size: 1,
+      color: '#f00'
+    }).addNode({
+      // Main attributes:
+      id: 'n1',
+      label: 'World !',
+      // Display attributes:
+      x: 1,
+      y: 1,
+      size: 1,
+      color: '#00f'
+    }).addEdge({
+      id: 'e0',
+      // Reference extremities:
+      source: 'n0',
+      target: 'n1'
+    });
+
+    // Ask sigma instance to refresh:
+    s.refresh();
+  </script>
+       
+      <script 
+	   src="https://code.jquery.com/jquery-3.2.1.min.js">
+	   </script>
+      <script
+       src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.js">
+      </script>
+	  
+	  
+      <script>
+          var tagestief = [[2,109.30],[3,110.11],[4,110.53],
+						  [5,109.40],[6,109.80],[9,111.60],
+						  [10,111.80],[11,111.83],[12,110.94],
+						  [13,111.60],[16,111.72],[17,110.00],
+						  [18,112.00],[19,111.99],[20,112.14],
+						  [23,111.04],[24,110.90],[25,111.70],
+							7
+						  [26,113.20],[27,113.70],[30,112.90],
+						  [31,111.78]];
+
+          var tageshoch = [[2,110.80],[3,112.09],[4,111.70],
+						  [5,110.73],[6,112.00],[9,113.10],
+						  [10,112.90],[11,113.86],[12,112.60],
+						  [13,112.50],[16,112.45],[17,112.29],
+						  [18,112.70],[19,113.09],[20,113.10],
+						  [23,112.50],[24,111.73],[25,113.65],
+						  [26,114.38],[27,114.46],[30,113.99],
+						  [31,113.50]];
+
+          var tagesendwert = [[2,110.30],[3,110.68],[4,111.03],
+							 [5,110.00],[6,111.61],[9,112.46],
+							 [10,112.75],[11,112.17],[12,111.76],
+							 [13,111.76],[16,112.00],[17,112.08],
+						 	 [18,112.35],[19,112.71],[20,112.14],
+							 [23,111.74],[24,111.51],[25,113.65],
+							 [26,114.00],[27,114.03],[30,113.35],
+							 [31,111.91]];
+
+          var handelsvolumen = [[2,2330417],[3,882614],[4,449615],
+							   [5,746100],[6,700163],[9,1297576],
+							   [10,1691504],[11,1521071],[12,1073743],
+							   [13,1149538],[16,861942],[17,848050],
+							   [18,528968],[19,77.8900],[20,610841],
+							   [23,366744],[24,734456],[25,1221101],
+							   [26,1302214],[27,739897],[30,1268146],
+							   [31,988174]];
+
+          var daten = [[2,"2. Jan"],[3,"3. Jan"],[4,"4. Jan"],
+					  [5,"5. Jan"],[6,"6. Jan"],[9,"9. Jan"],
+					  [10,"10. Jan"],[11,"11. Jan"],[12,"12. Jan"],
+					  [13,"13. Jan"],[16,"16. Jan"],[17,"17. Jan"],
+					  [18,"18. Jan"],[19,"19. Jan"],[20,"20. Jan"],
+					  [23,"23. Jan"],[24,"24. Jan"],[25,"25. Jan"],
+				   	  [26,"26. Jan"],[27,"27. Jan"],[30,"30. Jan"],
+					  [31,"31. Jan"]];
+					  8
+
+          var datenquelle1 = [
+             { data: tagestief, color: "#ff0000" },
+             { data: tageshoch, color: "#009900" },
+             { data: tagesendwert, color: "#ffff00" },
+          ];
+
+          var datenquelle2 = [
+            { data: handelsvolumen, color: "#0066ff" }
+          ];
+
+          var optionen = {
+             series: {
+                bars: { show:true }
+             },
+             bars: {
+                align: "center",
+                barWidth: 0.75
+             },
+             xaxis: {
+                ticks: daten
+             }
+          }
+
+          $(function () {
+             $.plot($("#linechart"), datenquelle1 );
+             $.plot($("#barchart"), datenquelle2, optionen );
+          });
+
+       </script>
+	</body>
+ </html>
